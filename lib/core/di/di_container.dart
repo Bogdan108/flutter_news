@@ -36,5 +36,6 @@ final class DIContainer {
         networkInform: networkInf,
         localSource: localData,
         remoteSource: remoteData);
+    getAllNews = AllNewsCase(newsRepository: newsRepository);
   }
 }

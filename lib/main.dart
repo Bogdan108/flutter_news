@@ -5,6 +5,7 @@ import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart
 import 'package:flutter_news/pages/home_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await DIContainer.instance.initDeps();
   runApp(const MainApp());
 }
