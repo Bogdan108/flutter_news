@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news/widgets/news_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
         title: const Text("Characters"),
         centerTitle: true,
       ),
-      body: PersonsList(),
+      body: const NewsList(),
     );
   }
 }
