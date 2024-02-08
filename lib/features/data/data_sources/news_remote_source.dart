@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_news/features/data/models/news_model.dart';
 
-abstract class NewsRemoteDataSource {
+abstract interface class NewsRemoteDataSource {
   Future<List<NewsModel>> getAllNews();
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   final Dio dio;
-  static const String apiKey = "27a81e3616eb4031ad884f0a1b3ed357";
+  final String _apiKey = "27a81e3616eb4031ad884f0a1b3ed357";
   NewsRemoteDataSourceImpl({required this.dio});
 
   @override
   Future<List<NewsModel>> getAllNews() => _getNewsFromUrl(
-      'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=$apiKey');
+      'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=$_apiKey');
 
   Future<List<NewsModel>> _getNewsFromUrl(String url) async {
     final response = await dio.get(url);

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/features/data/models/news_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class NewsLocalDataSource {
+abstract interface class NewsLocalDataSource {
   Future<List<NewsModel>> getLastNewsFromCache();
   Future<List<String>> newsToCache(List<NewsModel> news);
 }
