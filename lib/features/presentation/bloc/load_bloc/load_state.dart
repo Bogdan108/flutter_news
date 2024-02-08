@@ -20,7 +20,7 @@ class NewsLoaded extends NewsLoadState {
 }
 
 class NewsLoadingError extends NewsLoadState {
-  final Object exception;
+  final String exception;
 
   const NewsLoadingError({required this.exception});
 }

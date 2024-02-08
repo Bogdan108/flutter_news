@@ -12,7 +12,7 @@ class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
         final newsList = await allNewsCase();
         emit(NewsLoaded(news: newsList));
       } catch (e) {
-        emit(NewsLoadingError(exception: e));
+        emit(const NewsLoadingError(exception: "Error of loading News"));
       }
     });
   }
