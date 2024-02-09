@@ -40,7 +40,7 @@ class NewsCacheImage extends StatelessWidget {
       },
       errorWidget: (context, url, error) {
         return _imageWidget(
-          const AssetImage('assets/images/ponabirajyt.jpeg'),
+          const AssetImage('assets/images/yandexbrowser.png'),
         );
       },
     );

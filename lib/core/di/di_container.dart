@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final class DIContainer {
   DIContainer._();
-  static DIContainer get instance => _instance ?? DIContainer._();
+  static DIContainer get instance => _instance ??= DIContainer._();
   static DIContainer? _instance;
 
   late final NewsRepository newsRepository;

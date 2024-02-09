@@ -16,9 +16,9 @@ class NewsRepositoryImp implements NewsRepository {
   Future<List<NewsEntity>> getAllNews() async {
     try {
       if (await networkInform.isConnected) {
-        return remoteSource.getAllNews();
+        return await remoteSource.getAllNews();
       } else {
-        return localSource.getLastNewsFromCache();
+        return await localSource.getLastNewsFromCache();
       }
     } catch (e) {
       Exception("Error of loading news in NewsRepository");
