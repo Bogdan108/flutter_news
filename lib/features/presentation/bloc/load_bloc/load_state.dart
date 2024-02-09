@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_news/features/domain/entities/news_entity.dart';
 
-abstract class NewsLoadState extends Equatable {
+sealed class NewsLoadState extends Equatable {
   const NewsLoadState();
   @override
   List<Object> get props => [];

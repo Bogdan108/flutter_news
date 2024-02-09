@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 
 class NewsCacheImage extends StatelessWidget {
   final String imageUrl;
-  final double width, height;
+  final double? width, height;
+  final BoxFit? fit;
 
   const NewsCacheImage(
-      {super.key,
-      required this.imageUrl,
-      required this.width,
-      required this.height});
+    this.imageUrl, {
+    super.key,
+    this.width,
+    this.height,
+    this.fit,
+  });
 
   Widget _imageWidget(ImageProvider imageProvider) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
         image: DecorationImage(
           image: imageProvider,
           fit: BoxFit.cover,
@@ -27,17 +28,13 @@ class NewsCacheImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
+      fit: fit,
       width: width,
       height: height,
       imageUrl: imageUrl,
-      imageBuilder: (context, imageProvider) {
-        return _imageWidget(imageProvider);
-      },
-      placeholder: (context, url) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(),
+      ),
       errorWidget: (context, url, error) {
         return _imageWidget(
           const AssetImage('assets/images/yandexbrowser.png'),
