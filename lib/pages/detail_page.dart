@@ -19,13 +19,23 @@ class NewsDetailPage extends StatelessWidget {
               style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 20),
-            NewsCacheImage(
-              imageUrl: news.urlToImage,
-              width: 200,
-              height: 200,
+            Image.network(
+              news.urlToImage,
             ),
             const SizedBox(height: 20),
-            ..._textValueDescription("Description:", news.description),
+            const Text(
+              'Detail News',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            const SizedBox(height: 1),
+            Text(news.description,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                )),
           ]),
         ),
       ),
