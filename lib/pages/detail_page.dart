@@ -8,7 +8,7 @@ class NewsDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Detailss')),
+      appBar: AppBar(title: const Text('Detailedes')),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
