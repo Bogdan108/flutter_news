@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/features/domain/entities/news_entity.dart';
+import 'package:flutter_news/widgets/news_cache_image.dart';
 
 class NewsDetailPage extends StatelessWidget {
   final NewsEntity news;
@@ -8,11 +9,11 @@ class NewsDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Detailedes')),
+      appBar: AppBar(title: const Text('Detail News')),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 news.title,
@@ -20,12 +21,12 @@ class NewsDetailPage extends StatelessWidget {
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 20),
-              Image.network(
+              NewsCacheImage(
                 news.urlToImage,
               ),
               const SizedBox(height: 20),
               const Text(
-                'Detail News',
+                'Description',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w300,
