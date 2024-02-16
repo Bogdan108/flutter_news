@@ -25,8 +25,8 @@ dev_dependencies:
 flutter_icons:
   ios: true
   android: true
-  image_path_ios: "lib/assets/images/yandexbrowser.png"
-  image_path_android: "lib/assets/images/yandexbrowser.png"
+  image_path_ios: "lib/assets/images/news1.jpeg"
+  image_path_android: "lib/assets/images/news1.jpeg"
 
 flutter:
   uses-material-design: true

@@ -17,11 +17,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        useMaterial3: true,
-        backgroundColor: Color(0xFF3C3E44),
-        scaffoldBackgroundColor: Color(0xFF3C3E44),
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: BlocProvider(
         lazy: false,
         create: (context) =>
