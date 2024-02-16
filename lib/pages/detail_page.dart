@@ -50,9 +50,23 @@ class NewsDetailPage extends StatelessWidget {
                 ),
               ),
               Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Text(
+                  'Content',
+                  style: theme.textTheme.headlineSmall,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+                child: Text(
+                  news.content,
+                  style: theme.textTheme.bodyMedium,
+                ),
+              ),
+              Container(
                 padding: const EdgeInsets.all(10),
                 child: Align(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.topLeft,
                   child: InkWell(
                     child: const Text(
                       'Open Link',

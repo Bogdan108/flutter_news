@@ -6,7 +6,8 @@ class NewsModel extends NewsEntity {
       required super.description,
       required super.title,
       required super.url,
-      required super.urlToImage});
+      required super.urlToImage,
+      required super.content});
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
@@ -15,6 +16,7 @@ class NewsModel extends NewsEntity {
       title: json['title'],
       url: json['url'],
       urlToImage: json['urlToImage'],
+      content: json['content'],
     );
   }
 
@@ -25,6 +27,7 @@ class NewsModel extends NewsEntity {
       "title": title,
       "url": url,
       "urlToImage": urlToImage,
+      "content": content,
     };
   }
 }
