@@ -44,23 +44,4 @@ class NewsDetailPage extends StatelessWidget {
       ),
     );
   }
-
-  List<Widget> _textValueDescription(String texts, String value) {
-    return [
-      const SizedBox(height: 20),
-      Text(
-        texts,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w300,
-        ),
-      ),
-      const SizedBox(height: 1),
-      Text(value,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          )),
-    ];
-  }
 }
