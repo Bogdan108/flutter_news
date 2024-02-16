@@ -23,7 +23,7 @@ class NewsCard extends StatelessWidget {
           vertical: 8,
         ),
         decoration: BoxDecoration(
-          color: Colors.black12,
+          color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
