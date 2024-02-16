@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/features/domain/entities/news_entity.dart';
 import 'package:flutter_news/widgets/news_cache_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatelessWidget {
   final NewsEntity news;
@@ -20,28 +21,64 @@ class NewsDetailPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                news.title,
-                style: theme.textTheme.titleLarge,
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  news.title,
+                  style: theme.textTheme.titleLarge,
+                ),
               ),
               const SizedBox(height: 20),
-              NewsCacheImage(
-                news.urlToImage,
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: NewsCacheImage(
+                  news.urlToImage,
+                ),
               ),
-              const SizedBox(height: 20),
-              Text(
-                'Description',
-                style: theme.textTheme.headlineSmall,
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                child: Text(
+                  'Description',
+                  style: theme.textTheme.headlineSmall,
+                ),
               ),
-              const SizedBox(height: 1),
-              Text(
-                news.description,
-                style: theme.textTheme.bodyMedium,
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+                child: Text(
+                  news.description,
+                  style: theme.textTheme.bodyMedium,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: InkWell(
+                    child: const Text(
+                      'Open Link',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    onTap: () {
+                      _launchURL(news.url);
+                    },
+                  ),
+                ),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
