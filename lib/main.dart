@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/core/di/di_container.dart';
 import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart';
 import 'package:flutter_news/pages/home_page.dart';
+import 'package:flutter_news/theme/dark_theme.dart';
+import 'package:flutter_news/theme/light_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +19,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: BlocProvider(
         lazy: false,
         create: (context) =>
