@@ -8,8 +8,13 @@ class NewsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Detail News')),
+      appBar: AppBar(
+          title: Text(
+        'Detail News',
+        style: theme.textTheme.headlineLarge,
+      )),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -17,28 +22,21 @@ class NewsDetailPage extends StatelessWidget {
             children: [
               Text(
                 news.title,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+                style: theme.textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
               NewsCacheImage(
                 news.urlToImage,
               ),
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 'Description',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w300,
-                ),
+                style: theme.textTheme.headlineSmall,
               ),
               const SizedBox(height: 1),
               Text(
                 news.description,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: theme.textTheme.bodyMedium,
               ),
             ],
           ),

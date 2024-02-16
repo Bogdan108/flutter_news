@@ -25,10 +25,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
-        title: const Text("News"),
+        title: Text(
+          "News",
+          style: theme.textTheme.headlineLarge,
+        ),
         centerTitle: true,
       ),
       body: BlocBuilder<NewsLoadBloc, NewsLoadState>(
