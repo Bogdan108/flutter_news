@@ -64,21 +64,24 @@ class NewsDetailPage extends StatelessWidget {
                   style: theme.textTheme.bodyMedium,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: theme.colorScheme.primary),
-                child: InkWell(
-                  child: const Text(
-                    'Open Link',
-                    style: TextStyle(
-                      color: Colors.blue,
+              Padding(
+                padding: const EdgeInsets.only(left: 14, bottom: 14),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: theme.colorScheme.primary),
+                  child: InkWell(
+                    child: const Text(
+                      'Open Link',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
                     ),
+                    onTap: () {
+                      _launchURL(news.url);
+                    },
                   ),
-                  onTap: () {
-                    _launchURL(news.url);
-                  },
                 ),
               ),
             ],
