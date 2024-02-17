@@ -6,6 +6,7 @@ import 'package:flutter_news/features/domain/entities/news_entity.dart';
 import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart';
 import 'package:flutter_news/features/presentation/bloc/load_bloc/load_event.dart';
 import 'package:flutter_news/features/presentation/bloc/load_bloc/load_state.dart';
+import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/widgets/news_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
         title: Text(
-          'News',
+          S.of(context).news,
           style: theme.textTheme.headlineLarge,
         ),
         centerTitle: true,

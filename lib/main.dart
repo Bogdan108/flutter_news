@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_news/core/di/di_container.dart';
 import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart';
+import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/pages/home_page.dart';
 import 'package:flutter_news/theme/dark_theme.dart';
 import 'package:flutter_news/theme/light_theme.dart';
@@ -18,6 +20,13 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

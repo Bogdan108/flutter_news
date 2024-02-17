@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/features/domain/entities/news_entity.dart';
+import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/widgets/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,7 +14,7 @@ class NewsDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        'Detail News',
+        S.of(context).detail_news,
         style: theme.textTheme.headlineLarge,
       )),
       body: SingleChildScrollView(
@@ -38,7 +39,7 @@ class NewsDetailPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
                 child: Text(
-                  'Description',
+                  S.of(context).description,
                   style: theme.textTheme.headlineSmall,
                 ),
               ),
@@ -52,7 +53,7 @@ class NewsDetailPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
                 child: Text(
-                  'Content',
+                  S.of(context).content,
                   style: theme.textTheme.headlineSmall,
                 ),
               ),
