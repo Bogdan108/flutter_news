@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_news/features/domain/entities/news_entity.dart';
 import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/widgets/news_cache_image.dart';
@@ -17,76 +19,56 @@ class NewsDetailPage extends StatelessWidget {
         S.of(context).detail_news,
         style: theme.textTheme.headlineLarge,
       )),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  news.title,
-                  style: theme.textTheme.titleLarge,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: NewsCacheImage(
-                  news.urlToImage,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-                child: Text(
-                  S.of(context).description,
-                  style: theme.textTheme.headlineSmall,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-                child: Text(
-                  news.description,
-                  style: theme.textTheme.bodyMedium,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-                child: Text(
-                  S.of(context).content,
-                  style: theme.textTheme.headlineSmall,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-                child: Text(
-                  news.content,
-                  style: theme.textTheme.bodyMedium,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 14, bottom: 14),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: theme.colorScheme.primary),
-                  child: InkWell(
-                    child: const Text(
-                      'Open Link',
-                      style: TextStyle(
-                        color: Colors.blue,
-                      ),
-                    ),
-                    onTap: () {
-                      _launchURL(news.url);
-                    },
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          Text(
+            news.title,
+            style: theme.textTheme.titleLarge,
+          ),
+          const SizedBox(height: 20),
+          NewsCacheImage(
+            news.urlToImage,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            S.of(context).description,
+            style: theme.textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            news.description,
+            style: theme.textTheme.bodyMedium,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            S.of(context).content,
+            style: theme.textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            news.content,
+            style: theme.textTheme.bodyMedium,
+          ),
+          const SizedBox(height: 10),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: FilledButton(
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                child: const Text(
+                  'Open Link',
+                  style: TextStyle(
+                    color: Colors.blue,
                   ),
                 ),
               ),
-            ],
+              onPressed: () {
+                _launchURL(news.url);
+              },
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
