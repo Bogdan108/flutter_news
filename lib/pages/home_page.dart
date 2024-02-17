@@ -17,11 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Bloc bloc;
   @override
   void initState() {
     super.initState();
-
-    BlocProvider.of<NewsLoadBloc>(context).add(LoadNews());
+    bloc = BlocProvider.of<NewsLoadBloc>(context);
+    bloc.add(LoadNews());
   }
 
   @override
@@ -36,13 +37,18 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      body: BlocBuilder<NewsLoadBloc, NewsLoadState>(
-        builder: (context, state) => switch (state) {
-          NewsLoading() => const CustomLoadingIndicator(),
-          NewsEmpty() => const CustomLoadingIndicator(),
-          NewsLoaded() => _NewsList(state.news),
-          NewsLoadingError() => CustomErrorWidget(state.exception),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          bloc.add(LoadNews());
         },
+        child: BlocBuilder<NewsLoadBloc, NewsLoadState>(
+          builder: (context, state) => switch (state) {
+            NewsLoading() => const CustomLoadingIndicator(),
+            NewsEmpty() => const CustomLoadingIndicator(),
+            NewsLoaded() => _NewsList(state.news),
+            NewsLoadingError() => CustomErrorWidget(state.exception),
+          },
+        ),
       ),
     );
   }

@@ -29,7 +29,6 @@ class NewsCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            //TODO: Понять как растягивать на возможную высоту
             Expanded(
               child: NewsCacheImage(
                 news.urlToImage,

@@ -66,20 +66,19 @@ class NewsDetailPage extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(10),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: InkWell(
-                    child: const Text(
-                      'Open Link',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: theme.colorScheme.primary),
+                child: InkWell(
+                  child: const Text(
+                    'Open Link',
+                    style: TextStyle(
+                      color: Colors.blue,
                     ),
-                    onTap: () {
-                      _launchURL(news.url);
-                    },
                   ),
+                  onTap: () {
+                    _launchURL(news.url);
+                  },
                 ),
               ),
             ],
