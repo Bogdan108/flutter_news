@@ -22,12 +22,12 @@ class NewsModel extends NewsEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      "author": author,
-      "description": description,
-      "title": title,
-      "url": url,
-      "urlToImage": urlToImage,
-      "content": content,
+      'author': author,
+      'description': description,
+      'title': title,
+      'url': url,
+      'urlToImage': urlToImage,
+      'content': content,
     };
   }
 }

@@ -7,7 +7,7 @@ abstract interface class NewsRemoteDataSource {
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   final Dio dio;
-  final String _apiKey = "27a81e3616eb4031ad884f0a1b3ed357";
+  final String _apiKey = '27a81e3616eb4031ad884f0a1b3ed357';
   NewsRemoteDataSourceImpl({required this.dio});
 
   @override
@@ -22,7 +22,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           .map((n) => NewsModel.fromJson(n))
           .toList();
     } else {
-      throw Exception("Error of getting news");
+      throw Exception('Error of getting news');
     }
   }
 }

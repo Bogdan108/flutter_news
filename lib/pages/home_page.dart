@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
         title: Text(
-          "News",
+          'News',
           style: theme.textTheme.headlineLarge,
         ),
         centerTitle: true,

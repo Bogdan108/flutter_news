@@ -21,7 +21,7 @@ class NewsRepositoryImp implements NewsRepository {
         return await localSource.getLastNewsFromCache();
       }
     } catch (e) {
-      Exception("Error of loading news in NewsRepository");
+      Exception('Error of loading news in NewsRepository');
     }
     return [];
   }
