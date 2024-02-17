@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_news/core/di/di_container.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_bloc.dart';
 import 'package:flutter_news/generated/l10n.dart';
-import 'package:flutter_news/pages/home_page.dart';
-import 'package:flutter_news/theme/dark_theme.dart';
-import 'package:flutter_news/theme/light_theme.dart';
+import 'package:flutter_news/features/news_loader/widget/pages/home_page.dart';
+import 'package:flutter_news/core/theme/dark_theme.dart';
+import 'package:flutter_news/core/theme/light_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

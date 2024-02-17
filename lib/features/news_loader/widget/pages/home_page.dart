@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/common/widget/custom_error_widget.dart';
 import 'package:flutter_news/common/widget/custom_loading_indecator.dart';
-import 'package:flutter_news/features/domain/entities/news_entity.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_bloc.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_event.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_state.dart';
+import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_bloc.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_event.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_state.dart';
 import 'package:flutter_news/generated/l10n.dart';
-import 'package:flutter_news/widgets/news_card.dart';
+import 'package:flutter_news/features/news_loader/widget/components/news_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

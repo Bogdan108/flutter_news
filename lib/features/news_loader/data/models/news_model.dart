@@ -1,4 +1,4 @@
-import 'package:flutter_news/features/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 
 class NewsModel extends NewsEntity {
   const NewsModel(

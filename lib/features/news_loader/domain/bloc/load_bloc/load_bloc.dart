@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_news/features/domain/use_cases/get_all_news.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_event.dart';
-import 'package:flutter_news/features/presentation/bloc/load_bloc/load_state.dart';
+import 'package:flutter_news/features/news_loader/domain/use_cases/get_all_news.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_event.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_state.dart';
 
 class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
   final AllNewsCase allNewsCase;

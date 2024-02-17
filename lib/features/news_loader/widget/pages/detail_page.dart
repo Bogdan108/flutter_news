@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_news/features/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 import 'package:flutter_news/generated/l10n.dart';
-import 'package:flutter_news/widgets/news_cache_image.dart';
+import 'package:flutter_news/common/widget/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatelessWidget {
@@ -20,7 +18,7 @@ class NewsDetailPage extends StatelessWidget {
         style: theme.textTheme.headlineLarge,
       )),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(15),
         children: [
           Text(
             news.title,

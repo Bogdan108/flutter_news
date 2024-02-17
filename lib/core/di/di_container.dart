@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_news/core/platform/network_info.dart';
-import 'package:flutter_news/features/data/data_sources/news_local_source.dart';
-import 'package:flutter_news/features/data/data_sources/news_remote_source.dart';
-import 'package:flutter_news/features/data/repository/news_repository.dart';
-import 'package:flutter_news/features/domain/repositories/news_repository.dart';
-import 'package:flutter_news/features/domain/use_cases/get_all_news.dart';
+import 'package:flutter_news/features/news_loader/data/data_sources/news_local_source.dart';
+import 'package:flutter_news/features/news_loader/data/data_sources/news_remote_source.dart';
+import 'package:flutter_news/features/news_loader/data/repository/news_repository.dart';
+import 'package:flutter_news/features/news_loader/domain/repositories/news_repository.dart';
+import 'package:flutter_news/features/news_loader/domain/use_cases/get_all_news.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

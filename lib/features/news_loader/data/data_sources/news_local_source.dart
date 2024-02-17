@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_news/features/data/models/news_model.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract interface class NewsLocalDataSource {

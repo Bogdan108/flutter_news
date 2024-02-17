@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/features/domain/entities/news_entity.dart';
-import 'package:flutter_news/pages/detail_page.dart';
-import 'package:flutter_news/widgets/news_cache_image.dart';
+import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/widget/pages/detail_page.dart';
+import 'package:flutter_news/common/widget/news_cache_image.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({super.key, required this.news});
