@@ -1,5 +1,8 @@
 import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'news_model.g.dart';
 
+@JsonSerializable()
 class NewsModel extends NewsEntity {
   const NewsModel(
       {required super.author,
@@ -9,25 +12,8 @@ class NewsModel extends NewsEntity {
       required super.urlToImage,
       required super.content});
 
-  factory NewsModel.fromJson(Map<String, dynamic> json) {
-    return NewsModel(
-      author: json['author'],
-      description: json['description'],
-      title: json['title'],
-      url: json['url'],
-      urlToImage: json['urlToImage'],
-      content: json['content'],
-    );
-  }
+  factory NewsModel.fromJson(Map<String, dynamic> json) =>
+      _$NewsModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'author': author,
-      'description': description,
-      'title': title,
-      'url': url,
-      'urlToImage': urlToImage,
-      'content': content,
-    };
-  }
+  Map<String, dynamic> toJson() => _$NewsModelToJson(this);
 }

@@ -28,7 +28,7 @@ class NewsCacheImage extends StatelessWidget {
     return CachedNetworkImage(
       fit: fit,
       imageUrl: imageUrl,
-      imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
+      //imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
       placeholder: (context, url) => const Center(
         child: CircularProgressIndicator(),
       ),

@@ -61,7 +61,7 @@ class _NewsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView.separated(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(12),
         itemCount: news.length,
         itemBuilder: (context, index) => NewsCard(news: news[index]),
         separatorBuilder: (context, index) => const SizedBox(height: 16),
