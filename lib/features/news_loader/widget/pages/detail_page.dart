@@ -33,7 +33,7 @@ class NewsDetailPage extends StatelessWidget {
             S.of(context).description,
             style: theme.textTheme.headlineSmall,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Text(
             news.description,
             style: theme.textTheme.bodyMedium,
@@ -43,7 +43,7 @@ class NewsDetailPage extends StatelessWidget {
             S.of(context).content,
             style: theme.textTheme.headlineSmall,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Text(
             news.content,
             style: theme.textTheme.bodyMedium,
@@ -53,12 +53,10 @@ class NewsDetailPage extends StatelessWidget {
             alignment: AlignmentDirectional.centerStart,
             child: FilledButton(
               child: Container(
-                padding: const EdgeInsets.all(5),
-                child: const Text(
+                padding: const EdgeInsets.all(10),
+                child: Text(
                   'Open Link',
-                  style: TextStyle(
-                    color: Colors.blue,
-                  ),
+                  style: theme.textTheme.bodySmall,
                 ),
               ),
               onPressed: () {

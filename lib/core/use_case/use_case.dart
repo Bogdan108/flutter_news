@@ -1,3 +1,3 @@
-abstract class UseCase<Type> {
+abstract interface class UseCase<Type> {
   Future<List<Type>> call();
 }
