@@ -1,6 +1,9 @@
 # Flutter News App
 
 Данный проект является мобильным приложением для просмотра новостных статей. Для стабильной подгрузки новостей следует использовать VPN.
+![Главный экран приложения](https://github.com/Bogdan108/flutter_news/blob/main/screenshots/main_screen.png)
+![Экран с описанием новости](https://github.com/Bogdan108/flutter_news/blob/main/screenshots/additional_screen.png)
+
 
 ## Используемые пакеты
 
@@ -27,6 +30,7 @@
 Приложение поддерживает светлую и темную тему, все шрифты и стили используются из основной темы приложения. Добавлена интернационализация.
 При разработке использовался пакет json_serializable. Код отформатирован, при команде `dart format --output=none --set-exit-if-changed` ошибок нет. Правила flutter_lint включены.
 ![](https://github.com/Bogdan108/flutter_news/blob/main/screenshots/dart_format.png)
-![](ссылка на скрин лежащий в репозитории проекта)
 
 К проекту прикреплены APK-файлы. Проект работает на Android и iOS платформах.
+![](https://github.com/Bogdan108/flutter_news/blob/main/screenshots/apk_build.png)
+
