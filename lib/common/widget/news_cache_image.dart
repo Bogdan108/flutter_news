@@ -15,12 +15,10 @@ class NewsCacheImage extends StatelessWidget {
   });
 
   Widget _imageWidget(ImageProvider imageProvider) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: imageProvider,
-          fit: BoxFit.cover,
-        ),
+    return FittedBox(
+      fit: BoxFit.fill,
+      child: Image(
+        image: imageProvider,
       ),
     );
   }
@@ -29,10 +27,8 @@ class NewsCacheImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       fit: fit,
-      width: width,
-      height: height,
       imageUrl: imageUrl,
-      //imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
+      imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
       placeholder: (context, url) => const Center(
         child: CircularProgressIndicator(),
       ),
