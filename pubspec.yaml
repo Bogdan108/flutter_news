@@ -21,6 +21,9 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   go_router: ^13.2.0
+  isar: ^2.1.4
+  isar_flutter_libs: ^2.1.4
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
