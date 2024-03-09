@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
       home: BlocProvider(
         lazy: false,
         create: (context) =>
-            NewsLoadBloc(allNewsCase: DIContainer.instance.getAllNews),
+            NewsLoadBloc(allNewsCase: DIContainer.instance.getAllNews, addFavouriteCase: DIContainer.instance.),
         child: const HomePage(),
       ),
     );

@@ -9,7 +9,7 @@ abstract interface class NewsLocalDataSource {
 }
 
 // ignore: constant_identifier_names
-const CACHED_PERSONS_LIST = 'CACHED_NEWS_LIST';
+const CACHED_NEWS_LIST = 'CACHED_NEWS_LIST';
 
 class NewsLocalDataSourceImpl implements NewsLocalDataSource {
   final SharedPreferences sharedPreferences;
@@ -18,7 +18,7 @@ class NewsLocalDataSourceImpl implements NewsLocalDataSource {
 
   @override
   Future<List<NewsModel>> getLastNewsFromCache() {
-    final jsonNewsList = sharedPreferences.getStringList(CACHED_PERSONS_LIST);
+    final jsonNewsList = sharedPreferences.getStringList(CACHED_NEWS_LIST);
     if (jsonNewsList!.isNotEmpty) {
       debugPrint('Get Persons from Cache: ${jsonNewsList.length}');
       return Future.value(jsonNewsList
@@ -34,7 +34,7 @@ class NewsLocalDataSourceImpl implements NewsLocalDataSource {
     final List<String> jsonNewsList =
         news.map((n) => json.encode(n.toJson())).toList();
 
-    sharedPreferences.setStringList(CACHED_PERSONS_LIST, jsonNewsList);
+    sharedPreferences.setStringList(CACHED_NEWS_LIST, jsonNewsList);
     debugPrint('Persons to write Cache: ${jsonNewsList.length}');
     return Future.value(jsonNewsList);
   }
