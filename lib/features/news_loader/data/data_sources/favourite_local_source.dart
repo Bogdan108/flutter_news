@@ -1,13 +1,12 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract interface class FavouriteNewsLocalDataSource {
   Future<List<NewsModel>> getFavouriteNews();
   Future<Set<String>> getFavouriteNewsKeys();
-  Future<bool> addFavouriteNews(List<NewsModel> news);
-  Future<bool> deleteFavouriteNews(List<NewsModel> news);
+  Future<bool> addFavouriteNews(NewsModel news);
+  Future<bool> deleteFavouriteNews(NewsModel news);
 }
 
 class FavouriteNewsLocalDataSourceImpl implements FavouriteNewsLocalDataSource {
@@ -16,26 +15,29 @@ class FavouriteNewsLocalDataSourceImpl implements FavouriteNewsLocalDataSource {
   FavouriteNewsLocalDataSourceImpl({required this.sharedPreferencesFavourite});
 
   @override
-  Future<bool> addFavouriteNews(List<NewsModel> news) {
-    // TODO: implement addFavouriteNews
-    throw UnimplementedError();
+  Future<bool> addFavouriteNews(NewsModel news) {
+    return sharedPreferencesFavourite.setString(
+        news.hashCode.toString(), json.encode(news.toJson()));
   }
 
   @override
-  Future<bool> deleteFavouriteNews(List<NewsModel> news) {
-    // TODO: implement deleteFavouriteNews
-    throw UnimplementedError();
+  Future<bool> deleteFavouriteNews(NewsModel news) {
+    return sharedPreferencesFavourite.remove(news.hashCode.toString());
   }
 
   @override
   Future<List<NewsModel>> getFavouriteNews() {
-    // TODO: implement getFavouriteNews
-    throw UnimplementedError();
+    final allFavouriteNews = sharedPreferencesFavourite
+        .getKeys()
+        .map((e) => NewsModel.fromJson(
+            json.decode(sharedPreferencesFavourite.getString(e)!)))
+        .toList();
+
+    return Future.value(allFavouriteNews);
   }
 
   @override
   Future<Set<String>> getFavouriteNewsKeys() {
-    // TODO: implement getFavouriteNewsKeys
-    throw UnimplementedError();
+    return Future.value(sharedPreferencesFavourite.getKeys());
   }
 }

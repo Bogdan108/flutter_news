@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_news/features/news_loader/domain/use_cases/favourite_add_news.dart';
+import 'package:flutter_news/features/news_loader/domain/use_cases/favourite_news.dart';
 import 'package:flutter_news/features/news_loader/domain/use_cases/get_all_news.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_event.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_state.dart';

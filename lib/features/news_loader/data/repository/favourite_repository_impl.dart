@@ -1,4 +1,5 @@
 import 'package:flutter_news/features/news_loader/data/data_sources/favourite_local_source.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 
@@ -9,18 +10,22 @@ class FavouriteNewsRepositoryImp implements FavouriteNewsRepository {
   });
 
   @override
-  void addFavouriteNews(NewsEntity news) {
-    // TODO: implement addFavouriteNews
-  }
-
-  @override
   Future<List<NewsEntity>> getAllFavouriteNews() {
-    // TODO: implement getAllFavouriteNews
-    throw UnimplementedError();
+    return favouriteLocalSource.getFavouriteNews();
   }
 
   @override
-  void deleteFavouriteNews(NewsEntity news) {
-    // TODO: implement deleteFavouriteNews
+  void deleteFavouriteNews(NewsModel news) {
+    favouriteLocalSource.deleteFavouriteNews(news);
+  }
+
+  @override
+  void addFavouriteNews(NewsModel news) {
+    favouriteLocalSource.addFavouriteNews(news);
+  }
+
+  @override
+  Future<Set<String>> getAllFavouriteNewsKeys() {
+    return favouriteLocalSource.getFavouriteNewsKeys();
   }
 }

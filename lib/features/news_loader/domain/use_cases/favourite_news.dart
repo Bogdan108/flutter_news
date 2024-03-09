@@ -1,3 +1,4 @@
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 
@@ -6,11 +7,15 @@ class AddFavouriteCase {
 
   AddFavouriteCase({required this.favouriteNewsRepository});
 
-  // void addFavouriteCase(List<NewsEntity> news) async {
-  //   return favouriteNewsRepository.addFavouriteNews(news);
-  // }
-
   Future<List<NewsEntity>> getAllFavouriteCase() async {
     return await favouriteNewsRepository.getAllFavouriteNews();
+  }
+
+  void addFavouriteCase(NewsModel news) {
+    return favouriteNewsRepository.addFavouriteNews(news);
+  }
+
+  void deleteFavouriteCase(NewsModel news) {
+    return favouriteNewsRepository.deleteFavouriteNews(news);
   }
 }

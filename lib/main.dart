@@ -31,8 +31,9 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme,
       home: BlocProvider(
         lazy: false,
-        create: (context) =>
-            NewsLoadBloc(allNewsCase: DIContainer.instance.getAllNews, addFavouriteCase: DIContainer.instance.),
+        create: (context) => NewsLoadBloc(
+          allNewsCase: DIContainer.instance.getAllNews,
+        ),
         child: const HomePage(),
       ),
     );
