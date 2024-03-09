@@ -2,10 +2,10 @@ import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 
-class AddFavouriteCase {
+class FavouriteNewsCase {
   final FavouriteNewsRepository favouriteNewsRepository;
 
-  AddFavouriteCase({required this.favouriteNewsRepository});
+  FavouriteNewsCase({required this.favouriteNewsRepository});
 
   Future<List<NewsEntity>> getAllFavouriteCase() async {
     return await favouriteNewsRepository.getAllFavouriteNews();

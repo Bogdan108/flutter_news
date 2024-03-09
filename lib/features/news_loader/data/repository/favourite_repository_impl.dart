@@ -1,6 +1,5 @@
 import 'package:flutter_news/features/news_loader/data/data_sources/favourite_local_source.dart';
 import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
-import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 
 class FavouriteNewsRepositoryImp implements FavouriteNewsRepository {
@@ -10,7 +9,7 @@ class FavouriteNewsRepositoryImp implements FavouriteNewsRepository {
   });
 
   @override
-  Future<List<NewsEntity>> getAllFavouriteNews() {
+  Future<List<NewsModel>> getAllFavouriteNews() {
     return favouriteLocalSource.getFavouriteNews();
   }
 

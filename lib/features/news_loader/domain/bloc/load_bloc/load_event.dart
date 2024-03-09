@@ -7,3 +7,9 @@ abstract class NewsLoadEvent extends Equatable {
 }
 
 class LoadNews extends NewsLoadEvent {}
+
+class LoadFavouriteNews extends NewsLoadEvent {}
+
+class AddFavouriteNews extends NewsLoadEvent {}
+
+class DeleteFavouriteNews extends NewsLoadEvent {}

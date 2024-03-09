@@ -18,16 +18,5 @@ class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
         emit(const NewsLoadingError(exception: 'Error of loading News'));
       }
     });
-    // on<SaveFavouriteNews>((event, emit) async {
-    //   emit(NewsLoading());
-    //   try {
-    //     //написать логику для добавления новости в бд
-    //     await addFavouriteCase(news: news);
-    //     emit(AddFavouriteCase());
-    //   } catch (e) {
-    //     emit(const NewsLoadingError(
-    //         exception: 'Error of saving favourite News'));
-    //   }
-    // });
   }
 }

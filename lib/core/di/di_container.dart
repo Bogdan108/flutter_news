@@ -7,6 +7,7 @@ import 'package:flutter_news/features/news_loader/data/repository/favourite_repo
 import 'package:flutter_news/features/news_loader/data/repository/news_repository_impl.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/news_repository.dart';
+import 'package:flutter_news/features/news_loader/domain/use_cases/favourite_news.dart';
 import 'package:flutter_news/features/news_loader/domain/use_cases/get_all_news.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,6 +28,7 @@ final class DIContainer {
   late final InternetConnectionChecker internetChecker;
   late final FavouriteNewsRepository favouriteNewsRepository;
   late final FavouriteNewsLocalDataSource favouriteLocalData;
+  late final FavouriteNewsCase favouriteNewsCase;
 
   Future<void> initDeps() async {
     dio = Dio();
@@ -52,5 +54,8 @@ final class DIContainer {
       newsRepository: newsRepository,
       favouriteNewsRepository: favouriteNewsRepository,
     );
+
+    favouriteNewsCase =
+        FavouriteNewsCase(favouriteNewsRepository: favouriteNewsRepository);
   }
 }

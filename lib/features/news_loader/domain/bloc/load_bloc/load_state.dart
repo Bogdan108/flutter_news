@@ -24,3 +24,15 @@ class NewsLoadingError extends NewsLoadState {
 
   const NewsLoadingError({required this.exception});
 }
+
+class FavouriteNewsLoaded extends NewsLoadState {
+  final List<NewsEntity> favouriteNews;
+
+  const FavouriteNewsLoaded({required this.favouriteNews});
+  @override
+  List<Object> get props => [favouriteNews];
+}
+
+class DeletedNews extends NewsLoadState {}
+
+class AddedNews extends NewsLoadState {}

@@ -4,13 +4,15 @@ part 'news_model.g.dart';
 
 @JsonSerializable()
 class NewsModel extends NewsEntity {
-  const NewsModel(
+  bool favourite;
+  NewsModel(
       {required super.author,
       required super.description,
       required super.title,
       required super.url,
       required super.urlToImage,
-      required super.content});
+      required super.content,
+      this.favourite = false});
 
   factory NewsModel.fromJson(Map<String, dynamic> json) =>
       _$NewsModelFromJson(json);

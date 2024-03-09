@@ -1,5 +1,5 @@
-import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 
 abstract interface class NewsRepository {
-  Future<List<NewsEntity>> getAllNews();
+  Future<List<NewsModel>> getAllNews();
 }
