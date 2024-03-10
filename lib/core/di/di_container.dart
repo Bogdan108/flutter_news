@@ -20,7 +20,6 @@ final class DIContainer {
   late final NewsRepository newsRepository;
   late final AllNewsCase getAllNews;
   late final NewsRemoteDataSource remoteData;
-  late final NewsLocalDataSource localData;
   late final NetworkInfo networkInf;
   late final SharedPreferences sharedPrefAllNews;
   late final SharedPreferences sharedPrefFavouriteNews;
@@ -34,8 +33,6 @@ final class DIContainer {
     dio = Dio();
     remoteData = NewsRemoteDataSourceImpl(dio: dio);
 
-    sharedPrefAllNews = await SharedPreferences.getInstance();
-    localData = NewsLocalDataSourceImpl(sharedPreferences: sharedPrefAllNews);
     internetChecker = InternetConnectionChecker();
     networkInf = NetworkInfoImpl(connectionCheker: internetChecker);
 
@@ -45,10 +42,8 @@ final class DIContainer {
     favouriteNewsRepository =
         FavouriteNewsRepositoryImp(favouriteLocalSource: favouriteLocalData);
 
-    newsRepository = NewsRepositoryImp(
-        networkInform: networkInf,
-        localSource: localData,
-        remoteSource: remoteData);
+    newsRepository =
+        NewsRepositoryImp(networkInform: networkInf, remoteSource: remoteData);
 
     getAllNews = AllNewsCase(
       newsRepository: newsRepository,

@@ -6,8 +6,8 @@ import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_sta
 
 class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
   final AllNewsCase allNewsCase;
-  final AddFavouriteCase addFavouriteCase;
-  NewsLoadBloc({required this.addFavouriteCase, required this.allNewsCase})
+  final FavouriteNewsCase favouriteNewsCase;
+  NewsLoadBloc({required this.favouriteNewsCase, required this.allNewsCase})
       : super(NewsEmpty()) {
     on<LoadNews>((event, emit) async {
       emit(NewsLoading());
@@ -16,6 +16,17 @@ class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
         emit(NewsLoaded(news: newsList));
       } catch (e) {
         emit(const NewsLoadingError(exception: 'Error of loading News'));
+      }
+    });
+    on<LoadFavouriteNews>((event, emit) async {
+      emit(NewsLoading());
+      try {
+        final favouriteNewsList = await favouriteNewsCase.getAllFavouriteCase();
+        emit(FavouriteNewsLoaded(favouriteNews: favouriteNewsList));
+      } catch (e) {
+        print(e);
+        emit(const NewsLoadingError(
+            exception: 'Error of loading favourite News'));
       }
     });
   }

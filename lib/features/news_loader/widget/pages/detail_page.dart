@@ -20,9 +20,22 @@ class NewsDetailPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(15),
         children: [
-          Text(
-            news.title,
-            style: theme.textTheme.titleLarge,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  news.title,
+                  style: theme.textTheme.titleLarge,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.favorite,
+                  color: Colors.grey,
+                ),
+                onPressed: () {},
+              )
+            ],
           ),
           const SizedBox(height: 20),
           NewsCacheImage(

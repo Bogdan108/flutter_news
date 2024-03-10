@@ -18,11 +18,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final Bloc bloc;
+  int _selectedIndex = 0;
   @override
   void initState() {
     super.initState();
     bloc = BlocProvider.of<NewsLoadBloc>(context);
     bloc.add(LoadNews());
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    if (index == 0) {
+      bloc.add(LoadNews());
+    } else {
+      bloc.add(LoadFavouriteNews());
+    }
   }
 
   @override
@@ -47,8 +59,26 @@ class _HomePageState extends State<HomePage> {
             NewsEmpty() => const CustomLoadingIndicator(),
             NewsLoaded() => _NewsList(state.news),
             NewsLoadingError() => CustomErrorWidget(state.exception),
+            FavouriteNewsLoaded() => _NewsList(state.favouriteNews),
+            DeletedNews() => throw UnimplementedError(),
+            AddedNews() => throw UnimplementedError(),
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favourite',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
