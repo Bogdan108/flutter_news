@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news/core/di/di_container.dart';
 import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
+import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/common/widget/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NewsDetailPage extends StatelessWidget {
+class NewsDetailPage extends StatefulWidget {
   final NewsModel news;
   const NewsDetailPage({required this.news, super.key});
+
+  @override
+  State<NewsDetailPage> createState() => _NewsDetailPageState();
+}
+
+class _NewsDetailPageState extends State<NewsDetailPage> {
+  late FavouriteNewsRepository favouriteNewsRepository;
+  @override
+  void initState() {
+    favouriteNewsRepository = DIContainer.instance.favouriteNewsRepository;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +38,33 @@ class NewsDetailPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  news.title,
+                  widget.news.title,
                   style: theme.textTheme.titleLarge,
                 ),
               ),
               IconButton(
                 icon: Icon(
                   Icons.favorite,
-                  color: news.favourite ? Colors.red : Colors.grey,
+                  color: widget.news.favourite ? Colors.red : Colors.grey,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  if (!widget.news.favourite) {
+                    setState(() {
+                      favouriteNewsRepository.addFavouriteNews(widget.news);
+                    });
+                  } else {
+                    favouriteNewsRepository.deleteFavouriteNews(widget.news);
+                  }
+                  setState(() {
+                    widget.news.favourite = !widget.news.favourite;
+                  });
+                },
               )
             ],
           ),
           const SizedBox(height: 20),
           NewsCacheImage(
-            news.urlToImage,
+            widget.news.urlToImage,
           ),
           const SizedBox(height: 20),
           Text(
@@ -48,7 +73,7 @@ class NewsDetailPage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            news.description,
+            widget.news.description,
             style: theme.textTheme.bodyMedium,
           ),
           const SizedBox(height: 20),
@@ -58,7 +83,7 @@ class NewsDetailPage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            news.content,
+            widget.news.content,
             style: theme.textTheme.bodyMedium,
           ),
           const SizedBox(height: 10),
@@ -73,7 +98,7 @@ class NewsDetailPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _launchURL(news.url);
+                _launchURL(widget.news.url);
               },
             ),
           ),

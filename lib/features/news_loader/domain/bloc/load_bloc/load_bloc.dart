@@ -24,7 +24,6 @@ class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
         final favouriteNewsList = await favouriteNewsCase.getAllFavouriteCase();
         emit(FavouriteNewsLoaded(favouriteNews: favouriteNewsList));
       } catch (e) {
-        print(e);
         emit(const NewsLoadingError(
             exception: 'Error of loading favourite News'));
       }
