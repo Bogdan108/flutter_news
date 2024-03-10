@@ -21,7 +21,7 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
   void initState() {
     super.initState();
     bloc = BlocProvider.of<NewsLoadBloc>(context);
-    bloc.add(LoadFavouriteNews());
+    bloc.add(LoadNews());
   }
 
   @override
@@ -46,9 +46,6 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
             NewsEmpty() => const CustomLoadingIndicator(),
             NewsLoaded() => NewsList(state.news),
             NewsLoadingError() => CustomErrorWidget(state.exception),
-            FavouriteNewsLoaded() => NewsList(state.favouriteNews),
-            DeletedNews() => throw UnimplementedError(),
-            AddedNews() => throw UnimplementedError(),
           },
         ),
       ),
