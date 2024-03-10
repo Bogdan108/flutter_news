@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/common/widget/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatelessWidget {
-  final NewsEntity news;
+  final NewsModel news;
   const NewsDetailPage({required this.news, super.key});
 
   @override
@@ -29,9 +29,9 @@ class NewsDetailPage extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.favorite,
-                  color: Colors.grey,
+                  color: news.favourite ? Colors.red : Colors.grey,
                 ),
                 onPressed: () {},
               )

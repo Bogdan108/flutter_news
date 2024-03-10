@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/common/widget/custom_error_widget.dart';
 import 'package:flutter_news/common/widget/custom_loading_indecator.dart';
-import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_bloc.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_event.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_state.dart';
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
 class _NewsList extends StatelessWidget {
   const _NewsList(this.news);
 
-  final List<NewsEntity> news;
+  final List<NewsModel> news;
 
   @override
   Widget build(BuildContext context) => ListView.separated(

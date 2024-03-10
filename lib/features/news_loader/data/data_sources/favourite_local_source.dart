@@ -27,11 +27,11 @@ class FavouriteNewsLocalDataSourceImpl implements FavouriteNewsLocalDataSource {
 
   @override
   Future<List<NewsModel>> getFavouriteNews() {
-    final List<String> keysOf = sharedPreferencesFavourite.getKeys().toList();
+    final List<String> keysOfFavourite =
+        sharedPreferencesFavourite.getKeys().toList();
 
     List<NewsModel> values = [];
-
-    for (var key in keysOf) {
+    for (var key in keysOfFavourite) {
       values.add(json.decode(sharedPreferencesFavourite.getString(key)!));
     }
 

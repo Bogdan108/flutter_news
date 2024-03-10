@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
 import 'package:flutter_news/features/news_loader/domain/entities/news_entity.dart';
 
 sealed class NewsLoadState extends Equatable {
@@ -12,7 +13,7 @@ class NewsEmpty extends NewsLoadState {}
 class NewsLoading extends NewsLoadState {}
 
 class NewsLoaded extends NewsLoadState {
-  final List<NewsEntity> news;
+  final List<NewsModel> news;
 
   const NewsLoaded({required this.news});
   @override
@@ -26,7 +27,7 @@ class NewsLoadingError extends NewsLoadState {
 }
 
 class FavouriteNewsLoaded extends NewsLoadState {
-  final List<NewsEntity> favouriteNews;
+  final List<NewsModel> favouriteNews;
 
   const FavouriteNewsLoaded({required this.favouriteNews});
   @override
