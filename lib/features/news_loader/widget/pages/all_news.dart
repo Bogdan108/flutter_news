@@ -44,7 +44,10 @@ class _AllNewsPageState extends State<AllNewsPage> {
           builder: (context, state) => switch (state) {
             NewsLoading() => const CustomLoadingIndicator(),
             NewsEmpty() => const CustomLoadingIndicator(),
-            NewsLoaded() => NewsList(state.news),
+            NewsLoaded() => NewsList(
+                state.news,
+                isFavourite: true,
+              ),
             NewsLoadingError() => CustomErrorWidget(state.exception),
           },
         ),

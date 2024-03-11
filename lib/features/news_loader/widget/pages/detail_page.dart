@@ -11,7 +11,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatefulWidget {
   final NewsModel news;
-  const NewsDetailPage({required this.news, super.key});
+  final bool isFavourite;
+  const NewsDetailPage(
+      {required this.news, this.isFavourite = false, super.key});
 
   @override
   State<NewsDetailPage> createState() => _NewsDetailPageState();
@@ -48,14 +50,11 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
-              //TODO fav button
-              if (true)
+              if (widget.isFavourite)
                 FilledButton(
-                  child: Container(
-                    child: Icon(
-                      Icons.favorite,
-                      color: widget.news.favourite ? Colors.red : Colors.grey,
-                    ),
+                  child: Icon(
+                    Icons.favorite,
+                    color: widget.news.favourite ? Colors.red : Colors.grey,
                   ),
                   onPressed: () {
                     if (!widget.news.favourite) {

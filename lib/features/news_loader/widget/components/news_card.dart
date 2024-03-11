@@ -4,8 +4,8 @@ import 'package:flutter_news/features/news_loader/widget/pages/detail_page.dart'
 import 'package:flutter_news/common/widget/news_cache_image.dart';
 
 class NewsCard extends StatelessWidget {
-  const NewsCard({super.key, required this.news});
-
+  const NewsCard({super.key, required this.news, this.isFavourite = false});
+  final bool isFavourite;
   final NewsModel news;
 
   @override
@@ -15,7 +15,9 @@ class NewsCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NewsDetailPage(news: news)),
+          MaterialPageRoute(
+              builder: (context) =>
+                  NewsDetailPage(news: news, isFavourite: isFavourite)),
         );
       },
       child: Container(
