@@ -47,8 +47,19 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
             FavouriteNewsStateNewsLoaded() => ListView.separated(
                 padding: const EdgeInsets.all(12),
                 itemCount: state.news.length,
-                itemBuilder: (context, index) =>
-                    NewsCard(news: state.news[index]),
+                itemBuilder: (context, index) => Dismissible(
+                    key: UniqueKey(),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      bloc.add(DeleteFavouriteNews(news: state.news[index]));
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: const Icon(Icons.delete),
+                    ),
+                    child: NewsCard(news: state.news[index])),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 16),
               ),

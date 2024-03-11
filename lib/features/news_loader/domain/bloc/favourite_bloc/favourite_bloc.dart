@@ -54,6 +54,8 @@ class FavouriteNewsLoadBloc
     emit(FavouriteNewsStateNewsLoading());
     try {
       favouriteNewsCase.deleteFavouriteCase(event.news);
+      final favouriteNewsList = await favouriteNewsCase.getAllFavouriteCase();
+      emit(FavouriteNewsStateNewsLoaded(news: favouriteNewsList));
     } catch (e) {
       emit(
         const FavouriteNewsLoadingError(

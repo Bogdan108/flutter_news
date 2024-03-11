@@ -50,10 +50,12 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
               ),
               //TODO fav button
               if (true)
-                IconButton(
-                  icon: Icon(
-                    Icons.favorite,
-                    color: widget.news.favourite ? Colors.red : Colors.grey,
+                FilledButton(
+                  child: Container(
+                    child: Icon(
+                      Icons.favorite,
+                      color: widget.news.favourite ? Colors.red : Colors.grey,
+                    ),
                   ),
                   onPressed: () {
                     if (!widget.news.favourite) {
@@ -67,7 +69,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                       widget.news.favourite = !widget.news.favourite;
                     });
                   },
-                )
+                ),
             ],
           ),
           const SizedBox(height: 20),
