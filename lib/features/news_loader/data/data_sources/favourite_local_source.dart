@@ -16,25 +16,13 @@ class FavouriteNewsLocalDataSourceImpl implements FavouriteNewsLocalDataSource {
 
   @override
   Future<bool> addFavouriteNews(NewsModel news) {
-    try {
-      return sharedPreferencesFavourite.setString(
-          news.hashCode.toString(), json.encode(news.toJson()));
-    } catch (e) {
-      print(e);
-    }
-    print(json.encode(news.toJson()));
-    return Future.value(true);
+    return sharedPreferencesFavourite.setString(
+        news.hashCode.toString(), json.encode(news.toJson()));
   }
 
   @override
   Future<bool> deleteFavouriteNews(NewsModel news) {
-    try {
-      return sharedPreferencesFavourite.remove(news.hashCode.toString());
-    } catch (e) {
-      print(e);
-    }
-    print(json.encode(news.toJson()));
-    return Future.value(true);
+    return sharedPreferencesFavourite.remove(news.hashCode.toString());
   }
 
   @override
@@ -43,13 +31,9 @@ class FavouriteNewsLocalDataSourceImpl implements FavouriteNewsLocalDataSource {
         sharedPreferencesFavourite.getKeys().toList();
 
     List<NewsModel> values = [];
-    try {
-      for (var key in keysOfFavourite) {
-        values.add(NewsModel.fromJson(
-            json.decode(sharedPreferencesFavourite.getString(key)!)));
-      }
-    } catch (e) {
-      print(e);
+    for (var key in keysOfFavourite) {
+      values.add(NewsModel.fromJson(
+          json.decode(sharedPreferencesFavourite.getString(key)!)));
     }
 
     return Future.value(values);
