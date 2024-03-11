@@ -9,43 +9,59 @@ class FavouriteNewsLoadBloc
 
   FavouriteNewsLoadBloc({required this.favouriteNewsCase})
       : super(FavouriteNewsStateNewsEmpty()) {
-    on<FavouriteNewsEvent>((event, emit) async {
-      switch (event) {
+    on<FavouriteNewsEvent>(
+      (event, emit) => switch (event) {
+        LoadFavouriteNews() => _load(emit),
+        AddFavouriteNews() => _add(event, emit),
+        DeleteFavouriteNews() => _delete(event, emit),
+      },
+    );
+  }
 
-          LoadFavouriteNews()
-          {
-            emit(FavouriteNewsStateNewsLoading());
-            try {
-              final favouriteNewsList =
-                  await favouriteNewsCase.getAllFavouriteCase();
-              emit(FavouriteNewsStateNewsLoaded(news: favouriteNewsList));
-            } catch (e) {
-              emit(const FavouriteNewsLoadingError(
-                  exception: 'Error of loading favourite News'));
-            }
-          },
+  Future<void> _load(Emitter<FavouriteNewsState> emit) async {
+    emit(FavouriteNewsStateNewsLoading());
+    try {
+      final favouriteNewsList = await favouriteNewsCase.getAllFavouriteCase();
+      emit(FavouriteNewsStateNewsLoaded(news: favouriteNewsList));
+    } catch (e) {
+      emit(
+        const FavouriteNewsLoadingError(
+          exception: 'Error of loading favourite News',
+        ),
+      );
+    }
+  }
 
-          AddFavouriteNews() {
-            try {
-              favouriteNewsCase.addFavouriteCase(event.news);
-              //TODO
-              //emit();
-            } catch (e) {
-              emit(const FavouriteNewsLoadingError(
-                  exception: 'Error of adding favourite News'));
-            }
-          },
-          DeleteFavouriteNews() {
-            // TODO: Handle this case.
-            try {
-              favouriteNewsCase.deleteFavouriteCase(event.news);
-            } catch (e) {
-              emit(const FavouriteNewsLoadingError(
-                  exception: 'Error of deleting favourite News'));
-            }
-          },
+  Future<void> _add(
+    AddFavouriteNews event,
+    Emitter<FavouriteNewsState> emit,
+  ) async {
+    emit(FavouriteNewsStateNewsLoading());
+    try {
+      favouriteNewsCase.addFavouriteCase(event.news);
+      //TODO
+      //emit();
+    } catch (e) {
+      emit(
+        const FavouriteNewsLoadingError(
+            exception: 'Error of adding favourite News'),
+      );
+    }
+  }
 
-      }
-    });
+  Future<void> _delete(
+    DeleteFavouriteNews event,
+    Emitter<FavouriteNewsState> emit,
+  ) async {
+    emit(FavouriteNewsStateNewsLoading());
+    // TODO: Handle this case.
+    try {
+      favouriteNewsCase.deleteFavouriteCase(event.news);
+    } catch (e) {
+      emit(
+        const FavouriteNewsLoadingError(
+            exception: 'Error of deleting favourite News'),
+      );
+    }
   }
 }

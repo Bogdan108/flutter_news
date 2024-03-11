@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_news/core/platform/network_info.dart';
 import 'package:flutter_news/features/news_loader/data/data_sources/favourite_local_source.dart';
-import 'package:flutter_news/features/news_loader/data/data_sources/news_local_source.dart';
 import 'package:flutter_news/features/news_loader/data/data_sources/news_remote_source.dart';
 import 'package:flutter_news/features/news_loader/data/repository/favourite_repository_impl.dart';
 import 'package:flutter_news/features/news_loader/data/repository/news_repository_impl.dart';
