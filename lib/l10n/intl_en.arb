@@ -2,5 +2,7 @@
     "description": "Description",
     "news": "News",
     "content": "Content",
-    "detail_news": "Detail News"
+    "detail_news": "Detail News",
+    "home": "Home",
+    "favourite": "Favourite"
 }

@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "content": MessageLookupByLibrary.simpleMessage("Content"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "detail_news": MessageLookupByLibrary.simpleMessage("Detail News"),
+        "favourite": MessageLookupByLibrary.simpleMessage("Favourite"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "news": MessageLookupByLibrary.simpleMessage("News")
       };
 }

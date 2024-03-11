@@ -32,7 +32,7 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
         title: Text(
-          S.of(context).news,
+          S.of(context).favourite,
           style: theme.textTheme.headlineLarge,
         ),
         centerTitle: true,

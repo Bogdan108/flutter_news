@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/features/news_loader/widget/pages/all_news.dart';
 import 'package:flutter_news/features/news_loader/widget/pages/favourite_news.dart';
+import 'package:flutter_news/generated/l10n.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,14 +28,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: S.of(context).home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favourite',
+            icon: const Icon(Icons.favorite),
+            label: S.of(context).favourite,
           ),
         ],
         currentIndex: _selectedIndex,

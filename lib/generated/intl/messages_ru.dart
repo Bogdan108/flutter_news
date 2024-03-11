@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "content": MessageLookupByLibrary.simpleMessage("Содержание"),
         "description": MessageLookupByLibrary.simpleMessage("Заголовок"),
         "detail_news": MessageLookupByLibrary.simpleMessage("Описание новости"),
+        "favourite": MessageLookupByLibrary.simpleMessage("Избранное"),
+        "home": MessageLookupByLibrary.simpleMessage("Главная"),
         "news": MessageLookupByLibrary.simpleMessage("Новости")
       };
 }
