@@ -31,13 +31,16 @@ class NewsCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Expanded(
+            Flexible(
               child: NewsCacheImage(
+                width: 220,
+                height: 160,
                 news.urlToImage,
+                fit: BoxFit.fill,
               ),
             ),
             const SizedBox(width: 16),
-            Expanded(
+            Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

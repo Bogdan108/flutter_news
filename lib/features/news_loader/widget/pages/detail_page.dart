@@ -10,10 +10,9 @@ import 'package:flutter_news/common/widget/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatefulWidget {
-  final NewsModel news;
+  NewsModel news;
   final bool isFavourite;
-  const NewsDetailPage(
-      {required this.news, this.isFavourite = false, super.key});
+  NewsDetailPage({required this.news, this.isFavourite = false, super.key});
 
   @override
   State<NewsDetailPage> createState() => _NewsDetailPageState();
@@ -65,7 +64,8 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                       bloc.add(DeleteFavouriteNews(news: widget.news));
                     }
                     setState(() {
-                      widget.news.copyWith(favourite: !widget.news.favourite);
+                      widget.news = widget.news
+                          .copyWith(favourite: !widget.news.favourite);
                     });
                   },
                 ),
@@ -73,6 +73,8 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           ),
           const SizedBox(height: 20),
           NewsCacheImage(
+            width: 300,
+            height: 300,
             widget.news.urlToImage,
           ),
           const SizedBox(height: 20),

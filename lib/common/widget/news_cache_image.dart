@@ -15,10 +15,13 @@ class NewsCacheImage extends StatelessWidget {
   });
 
   Widget _imageWidget(ImageProvider imageProvider) {
-    return FittedBox(
-      fit: BoxFit.fill,
-      child: Image(
-        image: imageProvider,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        image: DecorationImage(
+          image: imageProvider,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -28,7 +31,9 @@ class NewsCacheImage extends StatelessWidget {
     return CachedNetworkImage(
       fit: fit,
       imageUrl: imageUrl,
-      //imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
+      width: width,
+      height: height,
+      imageBuilder: (context, imageProvider) => _imageWidget(imageProvider),
       placeholder: (context, url) => const Center(
         child: CircularProgressIndicator(),
       ),
