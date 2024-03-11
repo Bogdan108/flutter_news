@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_news/core/di/di_container.dart';
 import 'package:flutter_news/core/theme/custom_theme.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_bloc.dart';
 import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_bloc.dart';
 import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/features/news_loader/widget/pages/home_page.dart';
@@ -18,24 +19,30 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      home: BlocProvider(
-        lazy: false,
-        create: (context) => NewsLoadBloc(
-          allNewsCase: DIContainer.instance.getAllNews,
-          favouriteNewsCase: DIContainer.instance.favouriteNewsCase,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => NewsLoadBloc(
+            allNewsCase: DIContainer.instance.getAllNews,
+          ),
         ),
-        child: const HomePage(),
+        BlocProvider(
+          create: (context) => FavouriteNewsLoadBloc(
+              favouriteNewsCase: DIContainer.instance.favouriteNewsCase),
+        ),
+      ],
+      child: MaterialApp(
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        home: const HomePage(),
       ),
     );
   }

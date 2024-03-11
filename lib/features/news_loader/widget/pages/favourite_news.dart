@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/common/widget/custom_error_widget.dart';
 import 'package:flutter_news/common/widget/custom_loading_indecator.dart';
-import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_bloc.dart';
-import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_event.dart';
-import 'package:flutter_news/features/news_loader/domain/bloc/load_bloc/load_state.dart';
-import 'package:flutter_news/features/news_loader/widget/components/news_list.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_bloc.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_event.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_state.dart';
+import 'package:flutter_news/features/news_loader/widget/components/news_card.dart';
 import 'package:flutter_news/generated/l10n.dart';
 
 class FavouriteNewsPage extends StatefulWidget {
@@ -20,8 +20,8 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
   @override
   void initState() {
     super.initState();
-    bloc = BlocProvider.of<NewsLoadBloc>(context);
-    bloc.add(LoadNews());
+    bloc = BlocProvider.of<FavouriteNewsLoadBloc>(context);
+    bloc.add(LoadFavouriteNews());
   }
 
   @override
@@ -38,14 +38,21 @@ class _FavouriteNewsPageState extends State<FavouriteNewsPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          bloc.add(LoadNews());
+          bloc.add(LoadFavouriteNews());
         },
-        child: BlocBuilder<NewsLoadBloc, NewsLoadState>(
+        child: BlocBuilder<FavouriteNewsLoadBloc, FavouriteNewsState>(
           builder: (context, state) => switch (state) {
-            NewsLoading() => const CustomLoadingIndicator(),
-            NewsEmpty() => const CustomLoadingIndicator(),
-            NewsLoaded() => NewsList(state.news),
-            NewsLoadingError() => CustomErrorWidget(state.exception),
+            FavouriteNewsStateNewsLoading() => const CustomLoadingIndicator(),
+            FavouriteNewsStateNewsEmpty() => const CustomLoadingIndicator(),
+            FavouriteNewsStateNewsLoaded() => ListView.separated(
+                padding: const EdgeInsets.all(12),
+                itemCount: state.news.length,
+                itemBuilder: (context, index) =>
+                    NewsCard(news: state.news[index]),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 16),
+              ),
+            FavouriteNewsLoadingError() => CustomErrorWidget(state.exception),
           },
         ),
       ),

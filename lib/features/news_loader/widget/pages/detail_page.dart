@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/core/di/di_container.dart';
 import 'package:flutter_news/features/news_loader/data/models/news_model.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_bloc.dart';
+import 'package:flutter_news/features/news_loader/domain/bloc/favourite_bloc/favourite_event.dart';
 import 'package:flutter_news/features/news_loader/domain/repositories/favourite_news_repository.dart';
 import 'package:flutter_news/generated/l10n.dart';
 import 'package:flutter_news/common/widget/news_cache_image.dart';
@@ -15,9 +18,12 @@ class NewsDetailPage extends StatefulWidget {
 }
 
 class _NewsDetailPageState extends State<NewsDetailPage> {
+  late final Bloc bloc;
   late FavouriteNewsRepository favouriteNewsRepository;
+
   @override
   void initState() {
+    bloc = BlocProvider.of<FavouriteNewsLoadBloc>(context);
     favouriteNewsRepository = DIContainer.instance.favouriteNewsRepository;
     super.initState();
   }
@@ -42,24 +48,26 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
-              IconButton(
-                icon: Icon(
-                  Icons.favorite,
-                  color: widget.news.favourite ? Colors.red : Colors.grey,
-                ),
-                onPressed: () {
-                  if (!widget.news.favourite) {
+              //TODO fav button
+              if (true)
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: widget.news.favourite ? Colors.red : Colors.grey,
+                  ),
+                  onPressed: () {
+                    if (!widget.news.favourite) {
+                      setState(() {
+                        bloc.add(AddFavouriteNews(news: widget.news));
+                      });
+                    } else {
+                      bloc.add(DeleteFavouriteNews(news: widget.news));
+                    }
                     setState(() {
-                      favouriteNewsRepository.addFavouriteNews(widget.news);
+                      widget.news.favourite = !widget.news.favourite;
                     });
-                  } else {
-                    favouriteNewsRepository.deleteFavouriteNews(widget.news);
-                  }
-                  setState(() {
-                    widget.news.favourite = !widget.news.favourite;
-                  });
-                },
-              )
+                  },
+                )
             ],
           ),
           const SizedBox(height: 20),
