@@ -39,8 +39,6 @@ class FavouriteNewsLoadBloc
     emit(FavouriteNewsStateNewsLoading());
     try {
       favouriteNewsCase.addFavouriteCase(event.news);
-      //TODO
-      //emit();
     } catch (e) {
       emit(
         const FavouriteNewsLoadingError(
@@ -54,7 +52,6 @@ class FavouriteNewsLoadBloc
     Emitter<FavouriteNewsState> emit,
   ) async {
     emit(FavouriteNewsStateNewsLoading());
-    // TODO: Handle this case.
     try {
       favouriteNewsCase.deleteFavouriteCase(event.news);
     } catch (e) {

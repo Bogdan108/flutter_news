@@ -7,14 +7,18 @@ class NewsLoadBloc extends Bloc<NewsLoadEvent, NewsLoadState> {
   final AllNewsCase allNewsCase;
 
   NewsLoadBloc({required this.allNewsCase}) : super(NewsEmpty()) {
-    on<LoadNews>((event, emit) async {
-      emit(NewsLoading());
-      try {
-        final newsList = await allNewsCase();
-        emit(NewsLoaded(news: newsList));
-      } catch (e) {
-        emit(const NewsLoadingError(exception: 'Error of loading News'));
-      }
-    });
+    on<NewsLoadEvent>((event, emit) => switch (event) {
+          LoadNews() => _load(emit),
+        });
+  }
+
+  Future<void> _load(Emitter<NewsLoadState> emit) async {
+    emit(NewsLoading());
+    try {
+      final newsList = await allNewsCase();
+      emit(NewsLoaded(news: newsList));
+    } catch (e) {
+      emit(const NewsLoadingError(exception: 'Error of loading News'));
+    }
   }
 }
