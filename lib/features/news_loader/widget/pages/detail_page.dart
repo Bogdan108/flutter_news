@@ -65,7 +65,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                       bloc.add(DeleteFavouriteNews(news: widget.news));
                     }
                     setState(() {
-                      widget.news.favourite = !widget.news.favourite;
+                      widget.news.copyWith(favourite: !widget.news.favourite);
                     });
                   },
                 ),

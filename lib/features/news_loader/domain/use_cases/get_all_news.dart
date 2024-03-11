@@ -18,7 +18,7 @@ class AllNewsCase implements UseCase<NewsModel> {
 
     final finalList = allNews.map((e) {
       if (favouriteNews.contains(e.hashCode.toString())) {
-        e.favourite = true;
+        e.copyWith(favourite: true);
       }
       return e;
     }).toList();
