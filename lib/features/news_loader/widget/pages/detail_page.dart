@@ -10,10 +10,9 @@ import 'package:flutter_news/common/widget/news_cache_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetailPage extends StatefulWidget {
-  final NewsModel news;
+  NewsModel news;
   final bool isFavourite;
-  const NewsDetailPage(
-      {required this.news, this.isFavourite = false, super.key});
+  NewsDetailPage({required this.news, this.isFavourite = false, super.key});
 
   @override
   State<NewsDetailPage> createState() => _NewsDetailPageState();
@@ -22,12 +21,11 @@ class NewsDetailPage extends StatefulWidget {
 class _NewsDetailPageState extends State<NewsDetailPage> {
   late final Bloc bloc;
   late FavouriteNewsRepository favouriteNewsRepository;
-  late bool favInd;
+
   @override
   void initState() {
     bloc = BlocProvider.of<FavouriteNewsLoadBloc>(context);
     favouriteNewsRepository = DIContainer.instance.favouriteNewsRepository;
-    favInd = widget.news.favourite;
     super.initState();
   }
 
@@ -55,10 +53,10 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                 FilledButton(
                   child: Icon(
                     Icons.favorite,
-                    color: favInd ? Colors.red : Colors.grey,
+                    color: widget.news.favourite ? Colors.red : Colors.grey,
                   ),
                   onPressed: () {
-                    if (!favInd) {
+                    if (!widget.news.favourite) {
                       setState(() {
                         bloc.add(AddFavouriteNews(news: widget.news));
                       });
@@ -66,7 +64,8 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                       bloc.add(DeleteFavouriteNews(news: widget.news));
                     }
                     setState(() {
-                      favInd = !favInd;
+                      widget.news = widget.news
+                          .copyWith(favourite: !widget.news.favourite);
                     });
                   },
                 ),
